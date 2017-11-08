@@ -19,7 +19,7 @@ The app is a REACT front end for the message board API built in (galvanize-messa
 - Use immutable pattern when manipulating the state of the messages
 - [ ] Add components to:
 + List all Messages displaying name, message and created_at date & time
-+ Add a new Message
++ Add a new Message (include a button to hide/show the compose form)
 + Delete a Message
 + Bonus: add update functionality
 + Bonus: Use Redux for you state management
