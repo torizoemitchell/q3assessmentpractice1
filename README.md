@@ -4,7 +4,7 @@
 
 ## Important Note
 
-This is a timed assessment.  You should be able to complete it in under 3 hours.  Remember to commit and push to your forked repository. At the _very least_, you should commit after each test passes. We will use the timestamps to evaluate how long it took.
+This is a timed assessment.  You should be able to complete it in under 3 hours.  Remember to commit and push to your forked repository.  We will use the timestamps to evaluate how long it took.
 
 ## Project Description
 
@@ -13,7 +13,8 @@ The app is a REACT front end for the message board API built in (galvanize-messa
 ## You are responsible for:
 
 - [ ] Forking and cloning this GitHub Repo.  create-react-app has been run for you.
-- [ ] Ensuring your galvanize-message API is up and running able to accept CORS request. Hint:
+- [ ] Ensuring your galvanize-message API is up and running able to accept CORS request. 
+Hint:
 ```
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -33,7 +34,8 @@ app.use(function(req, res, next) {
 + Add a Toolbar at the top with a search filter and a display of the count of the messages.  The filter should work with the message and name attributes and reset to the original message list when it is cleared. 
 + Bonus: Add update functionality
 + Bonus: Use Redux for you state management
-- [ ] Make a production build of your app and deploy the static assests to surge. Hint:
+- [ ] Make a production build of your app and deploy the static assests to surge. 
+Hint:
 ```
 yarn run build
 cd build
