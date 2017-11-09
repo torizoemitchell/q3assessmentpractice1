@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
 + Delete a Message
 + Add a Toolbar at the top with a search filter and a display of the count of the messages.  The filter should work with the message and name attributes and reset to the original message list when it is cleared. 
 + Bonus: Add update functionality
-+ Bonus: Use Redux for you state management
++ Bonus: Use Redux for your state management
 - [ ] Make a production build of your app and deploy the static assests to surge. 
 Hint:
 ```
