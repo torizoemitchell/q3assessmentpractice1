@@ -4,7 +4,7 @@
 
 ## Important Note
 
-This is a timed assessment.  You should be able to complete it in under 3 hours.  Remember to commit and push to your forked repository.  We will use the timestamps to evaluate how long it took.
+This is a timed assessment.  You should be able to complete it in under 3.5 hours.  Remember to commit and push to your forked repository.  We will use the timestamps to evaluate how long it took.
 
 ## Project Description
 
@@ -31,8 +31,8 @@ app.use(function(req, res, next) {
 + List all Messages displaying name, message.  Include a "Delete" icon or button next to the message.
 + Add a new Message (include a button to hide/show the compose form)
 + Delete a Message
-+ Add a Toolbar at the top with a search filter and a display of the count of the messages.  The filter should work with the message and name attributes and reset to the original message list when it is cleared. 
-+ Bonus: Add update functionality
++ Update a Message including populating the existing values.  Include an "Edit" icon or button next to the message
++ Bonus: Add a Toolbar at the top with a search filter and a display of the count of the messages.  The filter should work with the message and name attributes and reset to the original message list when it is cleared. 
 + Bonus: Use Redux for your state management
 - [ ] Make a production build of your app and deploy the static assests to surge. 
 Hint:
