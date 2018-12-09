@@ -10,7 +10,7 @@ export default class Header extends React.Component {
     const messageInfo = this.props.messageInfo
     const updateMessage = this.props.updateMessage
     const deleteMessage = this.props.deleteMessage
-    console.log("MessageInfo: ", messageInfo)
+    //console.log("MessageInfo: ", messageInfo)
     return(
         <Table className='container'>
           <thead>

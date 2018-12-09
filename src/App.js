@@ -18,7 +18,7 @@ class App extends Component {
   async componentDidMount() {
     const response = await fetch(`https://toriq2assessment.herokuapp.com/messages`)
     const jsonResponse = await response.json()
-    console.log("jsonResponse: ", jsonResponse)
+    //console.log("jsonResponse: ", jsonResponse)
     this.setState({
       ...this.state,
       messages: jsonResponse,
@@ -27,7 +27,32 @@ class App extends Component {
   }
 
   showCreateForm = () => {
+    this.setState({
+      ...this.state,
+      createFormShowing: !this.state.createFormShowing
+    })
+  }
 
+  submitMessage = async(message) => {
+    //console.log("submit: ", message)
+    const response = await fetch(`https://toriq2assessment.herokuapp.com/messages`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message)
+    })
+    const jsonResponse = await response.json()
+    console.log("jsonResponse to POST: ", jsonResponse)
+    this.setState({
+      ...this.state,
+      messages: [
+        ...this.state.messages,
+        jsonResponse
+      ],
+      createFormShowing: false
+    })
   }
 
   updateMessage = (id) => {
@@ -41,8 +66,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header/>
-        <CreateMessageForm/>
+        <Header showCreateForm={this.showCreateForm}/>
+        {this.state.createFormShowing ? <CreateMessageForm submitMessage={this.submitMessage}/> : ''}
         {this.state.isLoaded ? <MessageList
           messageInfo={this.state.messages}
           updateMessage={this.updateMessage}

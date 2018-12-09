@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'react-materialize'
+import { Button, Modal } from 'react-materialize'
 
 export default class Message extends React.Component {
 
@@ -9,15 +9,19 @@ export default class Message extends React.Component {
     const messageInfo = this.props.messageInfo
     const updateMessage = this.props.updateMessage
     const deleteMessage = this.props.deleteMessage
-    console.log(this.props)
+    //console.log(this.props)
     return(
       <tr>
         <td>{messageInfo.name}</td>
         <td>{messageInfo.message}</td>
-        <td><Button
-          waves='light'
-          onClick={(e) => {e.preventDefault(); updateMessage(this.props.id)}}
-        >Update</Button></td>
+
+        <td>
+          <Modal
+            header='Update'
+            trigger={<Button>Update</Button>}>
+            <p>form here</p>
+          </Modal>
+        </td>
         <td><Button
           waves='light'
           onClick={(e) => {e.preventDefault(); deleteMessage(this.props.id)}}

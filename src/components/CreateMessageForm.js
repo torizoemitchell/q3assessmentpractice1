@@ -9,18 +9,29 @@ export default class CreateMessageForm extends React.Component {
     message: ''
   }
 
+  updateForm = (str, field) => {
+    this.setState({
+      ...this.state,
+      [field]: str
+    })
+  }
 
 
 
   render(){
+    console.log("name: ", this.state.name)
+    console.log("message: ", this.state.message)
+    const submitMessage = this.props.submitMessage
     return(
-      <Row className='container form'>
-        <Row >
-          <Input s={6} label="Name" />
-          <Input type="textarea" label="Message" s={12} />
+      <form onSubmit={(e) => {e.preventDefault(); submitMessage(this.state)}}>
+        <Row className='container form'>
+          <Row>
+            <Input required s={6} label="Name" onChange={(e, value) => {this.updateForm(value, 'name')}}/>
+            <Input required type="textarea" label="Message" s={12} onChange={(e, value) => {this.updateForm(value, 'message')}}/>
+          </Row>
+          <Button type='submit' waves='light'>Submit</Button>
         </Row>
-        <Button waves='light'>Add Message</Button>
-      </Row>
+      </form>
     )
   }
 }
