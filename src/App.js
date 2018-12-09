@@ -5,30 +5,30 @@ import MessageList from './components/MessageList.js'
 
 class App extends Component {
 
-  // constructor(props){
-  //   super(props)
-  //   this.state = {
-  //     isLoaded: false,
-  //     messages: [],
-  //   }
-  // }
-  //
-  // async componentDidMount() {
-  //   const response = await fetch(`${process.env.REACT_APP_API_URL}messages`)
-  //   const jsonResponse = await response.json()
-  //   this.setState({
-  //     ...this.state,
-  //     messages: jsonResponse,
-  //     isLoaded: true,
-  //
-  //   })
-  // }
+  constructor(props){
+    super(props)
+    this.state = {
+      isLoaded: false,
+      messages: [],
+    }
+  }
+
+  async componentDidMount() {
+    const response = await fetch(`https://toriq2assessment.herokuapp.com/messages`)
+    const jsonResponse = await response.json()
+    console.log("jsonResponse: ", jsonResponse)
+    this.setState({
+      ...this.state,
+      messages: jsonResponse,
+      isLoaded: true,
+    })
+  }
 
   render() {
     return (
       <div className="App">
         <Header/>
-        <MessageList/>
+        {this.state.isLoaded ? <MessageList messageInfo={this.state.messages}/> : "Loading..."}
       </div>
     );
   }
