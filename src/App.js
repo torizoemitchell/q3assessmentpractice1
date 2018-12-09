@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import Header from './components/Header.js'
 import MessageList from './components/MessageList.js'
+import CreateMessageForm from './components/CreateMessageForm.js'
 
 class App extends Component {
 
@@ -10,6 +11,7 @@ class App extends Component {
     this.state = {
       isLoaded: false,
       messages: [],
+      createFormShowing: false
     }
   }
 
@@ -24,11 +26,28 @@ class App extends Component {
     })
   }
 
+  showCreateForm = () => {
+
+  }
+
+  updateMessage = (id) => {
+    console.log("updateMessage: ", id)
+  }
+
+  deleteMessage = (id) => {
+    console.log("deleteMessage: ", id)
+  }
+
   render() {
     return (
       <div className="App">
         <Header/>
-        {this.state.isLoaded ? <MessageList messageInfo={this.state.messages}/> : "Loading..."}
+        <CreateMessageForm/>
+        {this.state.isLoaded ? <MessageList
+          messageInfo={this.state.messages}
+          updateMessage={this.updateMessage}
+          deleteMessage={this.deleteMessage}
+        /> : "Loading..."}
       </div>
     );
   }
