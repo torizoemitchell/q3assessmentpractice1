@@ -55,12 +55,59 @@ class App extends Component {
     })
   }
 
-  updateMessage = (id) => {
-    console.log("updateMessage: ", id)
+  findMessageIndex = (id) => {
+    const messages = this.state.messages
+    for(let i = 0; i < messages.length; i++){
+      if(messages[i].id === id){
+        return i
+      }
+    }
+    return -1
   }
 
-  deleteMessage = (id) => {
+  updateMessage = async(id, message) => {
+    console.log("updateMessage: ", id, message)
+    const response = await fetch(`https://toriq2assessment.herokuapp.com/messages/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message)
+    })
+    const jsonResponse = await response.json()
+    console.log("jsonResponse to PATCH: ", jsonResponse)
+    const index = this.findMessageIndex(jsonResponse.id)
+    console.log("index: ", index)
+    console.log("this.state.messages: ", this.state.messages)
+
+    this.setState({
+      ...this.state,
+      messages: [
+        ...this.state.messages.slice(0, index),
+        jsonResponse,
+        ...this.state.messags.slice(index + 1)
+      ]
+    })
+  }
+
+  deleteMessage = async(id) => {
     console.log("deleteMessage: ", id)
+    const response = await fetch(`https://toriq2assessment.herokuapp.com/messages/${id}`, {
+      method: 'DELETE',
+    })
+    const jsonResponse = await response.json()
+    console.log("jsonResponse to DELETE: ", jsonResponse)
+    const index = this.findMessageIndex(id)
+    console.log("index: ", index)
+    this.setState({
+      ...this.state,
+      messages: [
+        ...this.state.messages.slice(0, index),
+        ...this.state.messages.slice(index + 1)
+      ],
+      createFormShowing: false
+    })
   }
 
   render() {
