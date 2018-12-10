@@ -86,8 +86,7 @@ class App extends Component {
       messages: [
         ...this.state.messages.slice(0, index),
         jsonResponse,
-        ...this.state.messags.slice(index + 1)
-      ]
+        ...this.state.messages.slice(index + 1)]
     })
   }
 
